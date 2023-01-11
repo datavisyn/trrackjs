@@ -1,0 +1,687 @@
+{
+    "name": "preview",
+    "mode": "development",
+    "bail": false,
+    "devtool": "cheap-module-source-map",
+    "entry": [
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/core-client/dist/esm/globals/polyfills.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/core-client/dist/esm/globals/globals.js",
+        "/home/zach/workspaces/trrackjs/node_modules/webpack-hot-middleware/client.js?reload=true&quiet=false&noInfo=true",
+        "/home/zach/workspaces/trrackjs/storybook-init-framework-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/react/dist/esm/client/docs/config-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/react/dist/esm/client/preview/config-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-docs/preview.js-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-actions/preview.js-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-backgrounds/preview.js-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-measure/preview.js-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-outline/preview.js-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/packages/vis/.storybook/preview.ts-generated-config-entry.js",
+        "/home/zach/workspaces/trrackjs/generated-stories-entry.cjs"
+    ],
+    "output": {
+        "path": "/home/zach/workspaces/trrackjs/node_modules/.cache/storybook/public",
+        "filename": "[name].iframe.bundle.js",
+        "publicPath": ""
+    },
+    "stats": { "preset": "none", "logging": "error" },
+    "watchOptions": { "ignored": {} },
+    "ignoreWarnings": [{ "message": {} }],
+    "plugins": [
+        {
+            "definitions": {
+                "process.env": {
+                    "NODE_ENV": "\"development\"",
+                    "NODE_PATH": "\"\"",
+                    "STORYBOOK": "\"true\"",
+                    "PUBLIC_URL": "\"\"",
+                    "NX_CLI_SET": "\"true\"",
+                    "NX_INVOKED_BY_RUNNER": "\"true\"",
+                    "NX_WORKSPACE_ROOT": "\"/home/zach/workspaces/trrackjs\"",
+                    "NX_TERMINAL_OUTPUT_PATH": "\"/home/zach/workspaces/trrackjs/node_modules/.cache/nx/terminalOutputs/1326a4490c732db76b3ca0f4a17a9936255a7972e13e316ede6abe396899320e\"",
+                    "NX_STREAM_OUTPUT": "\"true\"",
+                    "NX_TASK_TARGET_PROJECT": "\"vis\"",
+                    "NX_TASK_HASH": "\"1326a4490c732db76b3ca0f4a17a9936255a7972e13e316ede6abe396899320e\""
+                }
+            }
+        },
+        {
+            "_compiler": null,
+            "_watcher": null,
+            "_staticModules": {
+                "/home/zach/workspaces/trrackjs/storybook-init-framework-entry.js": "import '@storybook/react';",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/react/dist/esm/client/docs/config-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/react/dist/esm/client/docs/config';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/react/dist/esm/client/preview/config-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/react/dist/esm/client/preview/config';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-docs/preview.js-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-docs/preview.js';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-actions/preview.js-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-actions/preview.js';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-backgrounds/preview.js-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-backgrounds/preview.js';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-measure/preview.js-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-measure/preview.js';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-outline/preview.js-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/node_modules/@storybook/addon-outline/preview.js';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/packages/vis/.storybook/preview.ts-generated-config-entry.js": "function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n/* eslint-disable import/no-unresolved */\nimport { addDecorator, addParameters, addLoader, addArgs, addArgTypes, addArgsEnhancer, addArgTypesEnhancer, setGlobalRender } from '/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api';\nimport * as config from '/home/zach/workspaces/trrackjs/packages/vis/.storybook/preview.ts';\nObject.keys(config).forEach(function (key) {\n  var value = config[key];\n\n  switch (key) {\n    case 'args':\n      {\n        return addArgs(value);\n      }\n\n    case 'argTypes':\n      {\n        return addArgTypes(value);\n      }\n\n    case 'decorators':\n      {\n        return value.forEach(function (decorator) {\n          return addDecorator(decorator, false);\n        });\n      }\n\n    case 'loaders':\n      {\n        return value.forEach(function (loader) {\n          return addLoader(loader, false);\n        });\n      }\n\n    case 'parameters':\n      {\n        return addParameters(_objectSpread({}, value), false);\n      }\n\n    case 'argTypesEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgTypesEnhancer(enhancer);\n        });\n      }\n\n    case 'argsEnhancers':\n      {\n        return value.forEach(function (enhancer) {\n          return addArgsEnhancer(enhancer);\n        });\n      }\n\n    case 'render':\n      {\n        return setGlobalRender(value);\n      }\n\n    case 'globals':\n    case 'globalTypes':\n      {\n        var v = {};\n        v[key] = value;\n        return addParameters(v, false);\n      }\n\n    case '__namedExportsOrder':\n    case 'decorateStory':\n    case 'renderToDOM':\n      {\n        return null; // This key is not handled directly in v6 mode.\n      }\n\n    default:\n      {\n        // eslint-disable-next-line prefer-template\n        return console.log(key + ' was not supported :( !');\n      }\n  }\n});",
+                "/home/zach/workspaces/trrackjs/generated-stories-entry.cjs": "\"use strict\";\n\nvar _frameworkImportPath = require(\"@storybook/react\");\n\n/* eslint-disable import/no-unresolved */\n(0, _frameworkImportPath.configure)([require.context('./packages/vis/src/stories', true, /^\\.(?:(?:^|\\/|(?:(?:(?!(?:^|\\/)\\.).)*?)\\/)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$/),require.context('./packages/vis/src/stories', true, /^\\.(?:(?:^|\\/|(?:(?:(?!(?:^|\\/)\\.).)*?)\\/)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$/)], module, false);"
+            }
+        },
+        {
+            "userOptions": {
+                "filename": "iframe.html",
+                "chunksSortMode": "none",
+                "alwaysWriteToDisk": true,
+                "inject": false,
+                "template": "/home/zach/workspaces/trrackjs/node_modules/@storybook/core-common/templates/index.ejs",
+                "templateParameters": {
+                    "version": "6.5.15",
+                    "globals": {
+                        "CONFIG_TYPE": "DEVELOPMENT",
+                        "LOGLEVEL": "info",
+                        "FRAMEWORK_OPTIONS": {},
+                        "FEATURES": {
+                            "postcss": true,
+                            "emotionAlias": false,
+                            "warnOnLegacyHierarchySeparator": true,
+                            "buildStoriesJson": false,
+                            "storyStoreV7": false,
+                            "modernInlineRender": false,
+                            "breakingChangesV7": false,
+                            "interactionsDebugger": false,
+                            "babelModeV7": false,
+                            "argTypeTargetsV7": false,
+                            "previewMdx2": false
+                        },
+                        "STORIES": [
+                            {
+                                "titlePrefix": "",
+                                "directory": "./packages/vis/src/stories",
+                                "files": "**/*.stories.mdx",
+                                "importPathMatcher": "^\\.[\\\\/](?:packages\\/vis\\/src\\/stories(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"
+                            },
+                            {
+                                "titlePrefix": "",
+                                "directory": "./packages/vis/src/stories",
+                                "files": "**/*.stories.@(js|jsx|ts|tsx)",
+                                "importPathMatcher": "^\\.[\\\\/](?:packages\\/vis\\/src\\/stories(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"
+                            }
+                        ],
+                        "SERVER_CHANNEL_URL": "ws://localhost:4400/storybook-server-channel"
+                    },
+                    "headHtmlSnippet": "<base target=\"_parent\" />\n\n<style>\n  /* While we aren't showing the main block yet, but still preparing, we want everything the user\n     has rendered, which may or may not be in #root, to be display none */\n  .sb-show-preparing-story:not(.sb-show-main) > :not(.sb-preparing-story) {\n    display: none;\n  }\n\n  .sb-show-preparing-docs:not(.sb-show-main) > :not(.sb-preparing-docs) {\n    display: none;\n  }\n\n  /* Hide our own blocks when we aren't supposed to be showing them */\n  :not(.sb-show-preparing-story) > .sb-preparing-story,\n  :not(.sb-show-preparing-docs) > .sb-preparing-docs,\n  :not(.sb-show-nopreview) > .sb-nopreview,\n  :not(.sb-show-errordisplay) > .sb-errordisplay {\n    display: none;\n  }\n\n  .sb-show-main.sb-main-centered {\n    margin: 0;\n    display: flex;\n    align-items: center;\n    min-height: 100vh;\n  }\n\n  .sb-show-main.sb-main-centered #root {\n    box-sizing: border-box;\n    margin: auto;\n    padding: 1rem;\n    max-height: 100%; /* Hack for centering correctly in IE11 */\n  }\n\n  /* Vertical centering fix for IE11 */\n  @media screen and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n    .sb-show-main.sb-main-centered:after {\n      content: '';\n      min-height: inherit;\n      font-size: 0;\n    }\n  }\n\n  .sb-show-main.sb-main-fullscreen {\n    margin: 0;\n    padding: 0;\n    display: block;\n  }\n\n  .sb-show-main.sb-main-padded {\n    margin: 0;\n    padding: 1rem;\n    display: block;\n    box-sizing: border-box;\n  }\n\n  .sb-wrapper {\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    padding: 20px;\n    font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular', 'San Francisco',\n      BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n    -webkit-font-smoothing: antialiased;\n    overflow: auto;\n  }\n\n  .sb-heading {\n    font-size: 14px;\n    font-weight: 600;\n    letter-spacing: 0.2px;\n    margin: 10px 0;\n    padding-right: 25px;\n  }\n\n  .sb-nopreview {\n    display: flex;\n    align-content: center;\n    justify-content: center;\n  }\n\n  .sb-nopreview_main {\n    margin: auto;\n    padding: 30px;\n    border-radius: 10px;\n    background: rgba(0, 0, 0, 0.03);\n  }\n\n  .sb-nopreview_heading {\n    text-align: center;\n  }\n\n  .sb-errordisplay {\n    border: 20px solid rgb(187, 49, 49);\n    background: #222;\n    color: #fff;\n    z-index: 999999;\n  }\n\n  .sb-errordisplay_code {\n    padding: 10px;\n    background: #000;\n    color: #eee;\n    font-family: 'Operator Mono', 'Fira Code Retina', 'Fira Code', 'FiraCode-Retina', 'Andale Mono',\n      'Lucida Console', Consolas, Monaco, monospace;\n  }\n\n  .sb-errordisplay pre {\n    white-space: pre-wrap;\n  }\n\n  @-webkit-keyframes sb-rotate360 {\n    from {\n      transform: rotate(0deg);\n    }\n    to {\n      transform: rotate(360deg);\n    }\n  }\n  @keyframes sb-rotate360 {\n    from {\n      transform: rotate(0deg);\n    }\n    to {\n      transform: rotate(360deg);\n    }\n  }\n  @-webkit-keyframes sb-glow {\n    0%,\n    100% {\n      opacity: 1;\n    }\n    50% {\n      opacity: 0.4;\n    }\n  }\n  @keyframes sb-glow {\n    0%,\n    100% {\n      opacity: 1;\n    }\n    50% {\n      opacity: 0.4;\n    }\n  }\n\n  /* We display the preparing loaders *over* the rendering story */\n  .sb-preparing-story,\n  .sb-preparing-docs {\n    background-color: white;\n    /* Maximum possible z-index. It would be better to use stacking contexts to ensure it's always\n    on top, but this isn't possible as it would require making CSS changes that could affect user code */\n    z-index: 2147483647;\n  }\n\n  .sb-loader {\n    -webkit-animation: sb-rotate360 0.7s linear infinite;\n    animation: sb-rotate360 0.7s linear infinite;\n    border-color: rgba(97, 97, 97, 0.29);\n    border-radius: 50%;\n    border-style: solid;\n    border-top-color: #646464;\n    border-width: 2px;\n    display: inline-block;\n    height: 32px;\n    left: 50%;\n    margin-left: -16px;\n    margin-top: -16px;\n    mix-blend-mode: difference;\n    overflow: hidden;\n    position: absolute;\n    top: 50%;\n    transition: all 200ms ease-out;\n    vertical-align: top;\n    width: 32px;\n    z-index: 4;\n  }\n\n  .sb-previewBlock {\n    background: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.1);\n    border-radius: 4px;\n    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;\n    margin: 25px auto 40px;\n    max-width: 600px;\n  }\n\n  .sb-previewBlock_header {\n    align-items: center;\n    box-shadow: rgba(0, 0, 0, 0.1) 0 -1px 0 0 inset;\n    display: flex;\n    gap: 14px;\n    height: 40px;\n    padding: 0 12px;\n  }\n\n  .sb-previewBlock_icon {\n    -webkit-animation: sb-glow 1.5s ease-in-out infinite;\n    animation: sb-glow 1.5s ease-in-out infinite;\n    background: #e6e6e6;\n    height: 14px;\n    width: 14px;\n  }\n  .sb-previewBlock_icon:last-child {\n    margin-left: auto;\n  }\n\n  .sb-previewBlock_body {\n    -webkit-animation: sb-glow 1.5s ease-in-out infinite;\n    animation: sb-glow 1.5s ease-in-out infinite;\n    height: 182px;\n    position: relative;\n  }\n\n  .sb-argstableBlock {\n    border-collapse: collapse;\n    border-spacing: 0;\n    font-size: 13px;\n    line-height: 20px;\n    margin: 25px auto 40px;\n    max-width: 600px;\n    text-align: left;\n    width: 100%;\n  }\n  .sb-argstableBlock th:first-of-type,\n  .sb-argstableBlock td:first-of-type {\n    padding-left: 20px;\n  }\n  .sb-argstableBlock th:nth-of-type(2),\n  .sb-argstableBlock td:nth-of-type(2) {\n    width: 35%;\n  }\n  .sb-argstableBlock th:nth-of-type(3),\n  .sb-argstableBlock td:nth-of-type(3) {\n    width: 15%;\n  }\n  .sb-argstableBlock th:last-of-type,\n  .sb-argstableBlock td:last-of-type {\n    width: 25%;\n    padding-right: 20px;\n  }\n  .sb-argstableBlock th span,\n  .sb-argstableBlock td span {\n    -webkit-animation: sb-glow 1.5s ease-in-out infinite;\n    animation: sb-glow 1.5s ease-in-out infinite;\n    background-color: rgba(0, 0, 0, 0.1);\n    border-radius: 0;\n    box-shadow: none;\n    color: transparent;\n  }\n  .sb-argstableBlock th {\n    padding: 10px 15px;\n  }\n\n  .sb-argstableBlock-body {\n    border-radius: 4px;\n    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 1px, rgba(0, 0, 0, 0.065) 0 0 0 1px;\n  }\n  .sb-argstableBlock-body tr {\n    background: transparent;\n    overflow: hidden;\n  }\n  .sb-argstableBlock-body tr:not(:first-child) {\n    border-top: 1px solid #e6e6e6;\n  }\n  .sb-argstableBlock-body tr:first-child td:first-child {\n    border-top-left-radius: 4px;\n  }\n  .sb-argstableBlock-body tr:first-child td:last-child {\n    border-top-right-radius: 4px;\n  }\n  .sb-argstableBlock-body tr:last-child td:first-child {\n    border-bottom-left-radius: 4px;\n  }\n  .sb-argstableBlock-body tr:last-child td:last-child {\n    border-bottom-right-radius: 4px;\n  }\n  .sb-argstableBlock-body td {\n    background: #fff;\n    padding-bottom: 10px;\n    padding-top: 10px;\n    vertical-align: top;\n  }\n  .sb-argstableBlock-body td:not(:first-of-type) {\n    padding-left: 15px;\n    padding-right: 15px;\n  }\n  .sb-argstableBlock-body button {\n    -webkit-animation: sb-glow 1.5s ease-in-out infinite;\n    animation: sb-glow 1.5s ease-in-out infinite;\n    background-color: rgba(0, 0, 0, 0.1);\n    border: 0;\n    border-radius: 0;\n    box-shadow: none;\n    color: transparent;\n    display: inline;\n    font-size: 12px;\n    line-height: 1;\n    padding: 10px 16px;\n  }\n\n  .sb-argstableBlock-summary {\n    margin-top: 4px;\n  }\n\n  .sb-argstableBlock-code {\n    margin-right: 4px;\n    margin-bottom: 4px;\n    padding: 2px 5px;\n  }\n</style>\n\n<script>\n  /* globals window */\n  /* eslint-disable no-underscore-dangle */\n  try {\n    if (window.top !== window) {\n      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.top.__REACT_DEVTOOLS_GLOBAL_HOOK__;\n      window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.top.__VUE_DEVTOOLS_GLOBAL_HOOK__;\n      window.top.__VUE_DEVTOOLS_CONTEXT__ = window.document;\n    }\n  } catch (e) {\n    // eslint-disable-next-line no-console\n    console.warn('unable to connect to top frame for connecting dev tools');\n  }\n\n  window.onerror = function onerror(message, source, line, column, err) {\n    if (window.CONFIG_TYPE !== 'DEVELOPMENT') return;\n    // eslint-disable-next-line no-var, vars-on-top\n    var xhr = new window.XMLHttpRequest();\n    xhr.open('POST', '/runtime-error');\n    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');\n    xhr.send(\n      JSON.stringify({\n        /* eslint-disable object-shorthand */\n        message: message,\n        source: source,\n        line: line,\n        column: column,\n        error: err && { message: err.message, name: err.name, stack: err.stack },\n        origin: 'preview',\n        /* eslint-enable object-shorthand */\n      })\n    );\n  };\n</script>\n",
+                    "bodyHtmlSnippet": "<div class=\"sb-preparing-story sb-wrapper\">\n  <div class=\"sb-loader\"></div>\n</div>\n\n<div class=\"sb-preparing-docs sb-wrapper\">\n  <div class=\"sb-previewBlock\">\n    <div class=\"sb-previewBlock_header\">\n      <div class=\"sb-previewBlock_icon\"></div>\n      <div class=\"sb-previewBlock_icon\"></div>\n      <div class=\"sb-previewBlock_icon\"></div>\n      <div class=\"sb-previewBlock_icon\"></div>\n    </div>\n    <div class=\"sb-previewBlock_body\">\n      <div class=\"sb-loader\"></div>\n    </div>\n  </div>\n  <table aria-hidden=\"true\" class=\"sb-argstableBlock\">\n    <thead class=\"sb-argstableBlock-head\">\n      <tr>\n        <th><span>Name</span></th>\n        <th><span>Description</span></th>\n        <th><span>Default</span></th>\n        <th><span>Control </span></th>\n      </tr>\n    </thead>\n    <tbody class=\"sb-argstableBlock-body\">\n      <tr>\n        <td><span>propertyName</span><span title=\"Required\">*</span></td>\n        <td>\n          <div><span>This is a short description</span></div>\n          <div class=\"sb-argstableBlock-summary\">\n            <div><span class=\"sb-argstableBlock-code\">summary</span></div>\n          </div>\n        </td>\n        <td>\n          <div><span class=\"sb-argstableBlock-code\">defaultValue</span></div>\n        </td>\n        <td><button>Set string</button></td>\n      </tr>\n      <tr>\n        <td><span>propertyName</span><span>*</span></td>\n        <td>\n          <div><span>This is a short description</span></div>\n          <div class=\"sb-argstableBlock-summary\">\n            <div><span class=\"sb-argstableBlock-code\">summary</span></div>\n          </div>\n        </td>\n        <td>\n          <div><span class=\"sb-argstableBlock-code\">defaultValue</span></div>\n        </td>\n        <td><button>Set string</button></td>\n      </tr>\n      <tr>\n        <td><span>propertyName</span><span>*</span></td>\n        <td>\n          <div><span>This is a short description</span></div>\n          <div class=\"sb-argstableBlock-summary\">\n            <div><span class=\"sb-argstableBlock-code\">summary</span></div>\n          </div>\n        </td>\n        <td>\n          <div><span class=\"sb-argstableBlock-code\">defaultValue</span></div>\n        </td>\n        <td><button>Set string</button></td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n\n<div class=\"sb-nopreview sb-wrapper\">\n  <div class=\"sb-nopreview_main\">\n    <h1 class=\"sb-nopreview_heading sb-heading\">No Preview</h1>\n    <p>Sorry, but you either have no stories or none are selected somehow.</p>\n    <ul>\n      <li>Please check the Storybook config.</li>\n      <li>Try reloading the page.</li>\n    </ul>\n    <p>\n      If the problem persists, check the browser console, or the terminal you've run Storybook from.\n    </p>\n  </div>\n</div>\n\n<div class=\"sb-errordisplay sb-wrapper\">\n  <pre id=\"error-message\" class=\"sb-heading\"></pre>\n  <pre class=\"sb-errordisplay_code\"><code id=\"error-stack\"></code></pre>\n</div>\n"
+                },
+                "minify": {
+                    "collapseWhitespace": true,
+                    "removeComments": true,
+                    "removeRedundantAttributes": true,
+                    "removeScriptTypeAttributes": false,
+                    "removeStyleLinkTypeAttributes": true,
+                    "useShortDoctype": true
+                }
+            },
+            "version": 5
+        },
+        {
+            "definitions": {
+                "process": "/home/zach/workspaces/trrackjs/node_modules/process/browser.js"
+            }
+        },
+        { "options": {} },
+        {
+            "options": {},
+            "logger": {},
+            "pathCache": {},
+            "fsOperations": 0,
+            "primed": false
+        },
+        {
+            "_sortedModulesCache": {},
+            "options": {
+                "filename": "[name].css",
+                "ignoreOrder": false,
+                "runtime": true,
+                "chunkFilename": "[name].css"
+            },
+            "runtimeOptions": { "linkType": "text/css" }
+        },
+        {
+            "options": {
+                "verbose": false,
+                "extensions": ["css", "scss", "sass", "less", "styl"],
+                "scriptExtensions": ["js", "mjs"],
+                "ignore": []
+            }
+        },
+        {
+            "name": "React Docgen Typescript Plugin",
+            "options": {
+                "shouldExtractLiteralValuesFromEnum": true,
+                "shouldRemoveUndefinedFromOptional": true,
+                "savePropValueAsString": true
+            }
+        }
+    ],
+    "module": {
+        "rules": [
+            {
+                "test": {},
+                "use": [
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/babel-loader/lib/index.js",
+                        "options": {
+                            "cacheDirectory": "/home/zach/workspaces/trrackjs/node_modules/.cache/storybook/babel",
+                            "presets": [],
+                            "plugins": [],
+                            "overrides": [
+                                {
+                                    "test": {},
+                                    "plugins": [
+                                        "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-named-exports-order/index.js"
+                                    ]
+                                },
+                                {
+                                    "test": {},
+                                    "plugins": [
+                                        [
+                                            "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-react-docgen/lib/index.js",
+                                            {
+                                                "DOC_GEN_COLLECTION_NAME": "STORYBOOK_REACT_CLASSES"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "include": ["/home/zach/workspaces/trrackjs"],
+                "exclude": {}
+            },
+            {
+                "test": {},
+                "use": [
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/babel-loader/lib/index.js",
+                        "options": {
+                            "sourceType": "unambiguous",
+                            "presets": [
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/preset-env/lib/index.js",
+                                    {
+                                        "shippedProposals": true,
+                                        "modules": false,
+                                        "loose": true,
+                                        "targets": "defaults"
+                                    }
+                                ],
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/preset-react/lib/index.js"
+                            ],
+                            "plugins": [
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-shorthand-properties/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-block-scoping/lib/index.js",
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-decorators/lib/index.js",
+                                    { "legacy": true }
+                                ],
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-class-properties/lib/index.js",
+                                    { "loose": true }
+                                ],
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-private-property-in-object/lib/index.js",
+                                    { "loose": true }
+                                ],
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-private-methods/lib/index.js",
+                                    { "loose": true }
+                                ],
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-export-default-from/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js",
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js",
+                                    { "loose": true, "useBuiltIns": true }
+                                ],
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-classes/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-arrow-functions/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-parameters/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-destructuring/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-spread/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-for-of/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-macros/dist/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-optional-chaining/lib/index.js",
+                                "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-proposal-nullish-coalescing-operator/lib/index.js",
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@storybook/core-common/node_modules/babel-plugin-polyfill-corejs3/lib/index.js",
+                                    {
+                                        "method": "usage-global",
+                                        "absoluteImports": "/home/zach/workspaces/trrackjs/node_modules/core-js/index.js",
+                                        "version": "3.26.1"
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            },
+            { "test": {}, "type": "asset/source" },
+            {
+                "test": {},
+                "include": {},
+                "use": [
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/babel-loader/lib/index.js",
+                        "options": {
+                            "presets": [
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/preset-env/lib/index.js",
+                                    { "modules": "commonjs" }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "use": [
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/babel-loader/lib/index.js",
+                        "options": {
+                            "babelrc": false,
+                            "configFile": false,
+                            "cacheDirectory": "/home/zach/workspaces/trrackjs/node_modules/.cache/storybook/babel",
+                            "presets": [],
+                            "plugins": [
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-react-jsx/lib/index.js",
+                                    {
+                                        "pragma": "React.createElement",
+                                        "pragmaFrag": "React.Fragment"
+                                    }
+                                ]
+                            ],
+                            "overrides": [
+                                {
+                                    "test": {},
+                                    "plugins": [
+                                        "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-named-exports-order/index.js"
+                                    ]
+                                },
+                                {
+                                    "test": {},
+                                    "plugins": [
+                                        [
+                                            "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-react-docgen/lib/index.js",
+                                            {
+                                                "DOC_GEN_COLLECTION_NAME": "STORYBOOK_REACT_CLASSES"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/@storybook/mdx1-csf/loader.js",
+                        "options": {
+                            "skipCsf": false,
+                            "remarkPlugins": [null, null]
+                        }
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "exclude": {},
+                "use": [
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/babel-loader/lib/index.js",
+                        "options": {
+                            "babelrc": false,
+                            "configFile": false,
+                            "cacheDirectory": "/home/zach/workspaces/trrackjs/node_modules/.cache/storybook/babel",
+                            "presets": [],
+                            "plugins": [
+                                [
+                                    "/home/zach/workspaces/trrackjs/node_modules/@babel/plugin-transform-react-jsx/lib/index.js",
+                                    {
+                                        "pragma": "React.createElement",
+                                        "pragmaFrag": "React.Fragment"
+                                    }
+                                ]
+                            ],
+                            "overrides": [
+                                {
+                                    "test": {},
+                                    "plugins": [
+                                        "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-named-exports-order/index.js"
+                                    ]
+                                },
+                                {
+                                    "test": {},
+                                    "plugins": [
+                                        [
+                                            "/home/zach/workspaces/trrackjs/node_modules/babel-plugin-react-docgen/lib/index.js",
+                                            {
+                                                "DOC_GEN_COLLECTION_NAME": "STORYBOOK_REACT_CLASSES"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "loader": "/home/zach/workspaces/trrackjs/node_modules/@storybook/mdx1-csf/loader.js",
+                        "options": {
+                            "skipCsf": true,
+                            "remarkPlugins": [null, null]
+                        }
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "loader": "/home/zach/workspaces/trrackjs/node_modules/@storybook/source-loader/dist/cjs/index.js",
+                "options": {
+                    "injectStoryParameters": true,
+                    "inspectLocalDependencies": true
+                },
+                "enforce": "pre"
+            },
+            {
+                "test": {},
+                "type": "asset",
+                "parser": { "dataUrlCondition": { "maxSize": 10000 } }
+            },
+            { "test": {}, "resolve": { "fullySpecified": false } },
+            {
+                "test": {},
+                "oneOf": [
+                    {
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/css-loader/dist/cjs.js",
+                                "options": {
+                                    "modules": { "mode": "local" },
+                                    "importLoaders": 1
+                                }
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            }
+                        ]
+                    },
+                    {
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/css-loader/dist/cjs.js",
+                                "options": {
+                                    "modules": { "mode": "local" },
+                                    "importLoaders": 1
+                                }
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/sass-loader/dist/cjs.js",
+                                "options": {
+                                    "implementation": {
+                                        "sassNull": {},
+                                        "sassTrue": { "value": true },
+                                        "sassFalse": { "value": false },
+                                        "Logger": { "silent": {} },
+                                        "info": "dart-sass\t1.56.2\t(Sass Compiler)\t[Dart]\ndart2js\t2.18.5\t(Dart Compiler)\t[Dart]",
+                                        "types": {},
+                                        "NULL": {},
+                                        "TRUE": { "value": true },
+                                        "FALSE": { "value": false }
+                                    },
+                                    "sassOptions": {
+                                        "fiber": false,
+                                        "precision": 8,
+                                        "includePaths": []
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/css-loader/dist/cjs.js",
+                                "options": {
+                                    "modules": { "mode": "local" },
+                                    "importLoaders": 1
+                                }
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/less-loader/dist/cjs.js",
+                                "options": { "lessOptions": { "paths": [] } }
+                            }
+                        ]
+                    },
+                    {
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/css-loader/dist/cjs.js",
+                                "options": {
+                                    "modules": { "mode": "local" },
+                                    "importLoaders": 1
+                                }
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/stylus-loader/dist/cjs.js",
+                                "options": {
+                                    "stylusOptions": { "include": [] }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "exclude": [],
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/web/src/utils/webpack/plugins/raw-css-loader.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            }
+                        ]
+                    },
+                    {
+                        "exclude": [],
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/web/src/utils/webpack/plugins/raw-css-loader.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/sass-loader/dist/cjs.js",
+                                "options": {
+                                    "implementation": {
+                                        "sassNull": {},
+                                        "sassTrue": { "value": true },
+                                        "sassFalse": { "value": false },
+                                        "Logger": { "silent": {} },
+                                        "info": "dart-sass\t1.56.2\t(Sass Compiler)\t[Dart]\ndart2js\t2.18.5\t(Dart Compiler)\t[Dart]",
+                                        "types": {},
+                                        "NULL": {},
+                                        "TRUE": { "value": true },
+                                        "FALSE": { "value": false }
+                                    },
+                                    "sourceMap": true,
+                                    "sassOptions": {
+                                        "fiber": false,
+                                        "precision": 8,
+                                        "includePaths": []
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "exclude": [],
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/web/src/utils/webpack/plugins/raw-css-loader.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/less-loader/dist/cjs.js",
+                                "options": {
+                                    "sourceMap": true,
+                                    "lessOptions": { "javascriptEnabled": true }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "exclude": [],
+                        "test": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/style-loader/dist/cjs.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/web/src/utils/webpack/plugins/raw-css-loader.js"
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/postcss-loader/dist/cjs.js",
+                                "options": {}
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/stylus-loader/dist/cjs.js",
+                                "options": {
+                                    "sourceMap": true,
+                                    "stylusOptions": { "include": [] }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "test": {},
+                "oneOf": [
+                    {
+                        "issuer": {},
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/react/node_modules/@svgr/webpack/dist/index.js",
+                                "options": {
+                                    "svgo": false,
+                                    "titleProp": true,
+                                    "ref": true
+                                }
+                            },
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/react/node_modules/url-loader/dist/cjs.js",
+                                "options": {
+                                    "limit": 10000,
+                                    "name": "[name].[hash:7].[ext]",
+                                    "esModule": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "use": [
+                            {
+                                "loader": "/home/zach/workspaces/trrackjs/node_modules/@nrwl/react/node_modules/url-loader/dist/cjs.js",
+                                "options": {
+                                    "limit": 10000,
+                                    "name": "[name].[hash:7].[ext]"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "resolve": {
+        "extensions": [".mjs", ".js", ".jsx", ".ts", ".tsx", ".json", ".cjs"],
+        "modules": ["node_modules"],
+        "mainFields": ["browser", "module", "main"],
+        "alias": {
+            "@storybook/addons": "/home/zach/workspaces/trrackjs/node_modules/@storybook/addons",
+            "@storybook/api": "/home/zach/workspaces/trrackjs/node_modules/@storybook/api",
+            "@storybook/channels": "/home/zach/workspaces/trrackjs/node_modules/@storybook/channels",
+            "@storybook/channel-postmessage": "/home/zach/workspaces/trrackjs/node_modules/@storybook/channel-postmessage",
+            "@storybook/components": "/home/zach/workspaces/trrackjs/node_modules/@storybook/components",
+            "@storybook/core-events": "/home/zach/workspaces/trrackjs/node_modules/@storybook/core-events",
+            "@storybook/router": "/home/zach/workspaces/trrackjs/node_modules/@storybook/router",
+            "@storybook/theming": "/home/zach/workspaces/trrackjs/node_modules/@storybook/theming",
+            "@storybook/semver": "/home/zach/workspaces/trrackjs/node_modules/@storybook/builder-webpack5/node_modules/@storybook/semver",
+            "@storybook/client-api": "/home/zach/workspaces/trrackjs/node_modules/@storybook/client-api",
+            "@storybook/client-logger": "/home/zach/workspaces/trrackjs/node_modules/@storybook/client-logger",
+            "react": "/home/zach/workspaces/trrackjs/node_modules/react",
+            "react-dom": "/home/zach/workspaces/trrackjs/node_modules/react-dom"
+        },
+        "fallback": {
+            "path": "/home/zach/workspaces/trrackjs/node_modules/@storybook/builder-webpack5/node_modules/path-browserify/index.js",
+            "assert": "/home/zach/workspaces/trrackjs/node_modules/browser-assert/lib/assert.js"
+        },
+        "plugins": [
+            {
+                "source": "described-resolve",
+                "target": "resolve",
+                "extensions": [".ts", ".tsx", ".mjs", ".js", ".jsx"],
+                "log": {},
+                "baseUrl": "../../..",
+                "absoluteBaseUrl": "/home/zach/workspaces/trrackjs"
+            }
+        ]
+    },
+    "optimization": {
+        "splitChunks": { "chunks": "all" },
+        "runtimeChunk": true,
+        "sideEffects": true,
+        "usedExports": false,
+        "moduleIds": "named",
+        "minimizer": []
+    },
+    "performance": { "hints": false }
+}

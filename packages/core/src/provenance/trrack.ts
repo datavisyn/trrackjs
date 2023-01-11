@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PayloadAction } from '@reduxjs/toolkit';
-import { applyPatch, compare, Operation } from 'fast-json-patch';
+import { applyPatch, compare, Operation, deepClone } from 'fast-json-patch';
 
 import { initEventManager } from '../event';
 import {
@@ -23,7 +23,7 @@ export enum TrrackEvents {
     TRAVERSAL_END = 'Traversal_End',
 }
 
-type ConfigureTrrackOptions<State> = {
+export type ConfigureTrrackOptions<State> = {
     registry: Registry<any>;
     initialState: State;
 };
@@ -52,9 +52,10 @@ function getState<State, Event extends string>(
         .map((n) => n.state.val as Operation[])
         .reduce((acc, patch) => [...acc, ...patch], []);
 
-    const checkpointState = getState(checkpointNode, nodes);
+    const checkpointState = (getState(checkpointNode, nodes));
+    console.log(checkpointState, patches, '4')
 
-    return applyPatch(checkpointState, patches, true, false).newDocument;
+    return applyPatch(checkpointState, JSON.parse(JSON.stringify(patches)), false, false).newDocument;
 }
 
 function determineSaveStrategy<T>(
@@ -69,7 +70,7 @@ function determineSaveStrategy<T>(
         })
     ).size;
 
-    if (uniquePatchesLength < objectKeysLength / 2) return 'patch';
+    if (uniquePatchesLength < objectKeysLength / 2 && patches.length < 1000) return 'patch';
 
     return 'checkpoint';
 }

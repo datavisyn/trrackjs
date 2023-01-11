@@ -1,0 +1,89 @@
+{
+    "name": "vis",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/vis/src",
+    "projectType": "library",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/js:swc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/vis",
+                "main": "packages/vis/src/index.ts",
+                "tsConfig": "packages/vis/tsconfig.lib.json",
+                "assets": ["packages/vis/*.md"]
+            }
+        },
+        "publish": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "node tools/scripts/publish.mjs vis {args.ver} {args.tag}"
+            },
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "build"
+                }
+            ]
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/vis/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/packages/vis"],
+            "options": {
+                "jestConfig": "packages/vis/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "version": {
+            "executor": "@jscutlery/semver:version",
+            "options": {
+                "preset": "conventional"
+            }
+        },
+        "deploy": {
+            "executor": "ngx-deploy-npm:deploy",
+            "options": {
+                "access": "public"
+            }
+        },
+        "storybook": {
+            "executor": "@nrwl/storybook:storybook",
+            "options": {
+                "uiFramework": "@storybook/react",
+                "port": 4400,
+                "config": {
+                    "configFolder": "packages/vis/.storybook"
+                }
+            },
+            "configurations": {
+                "ci": {
+                    "quiet": true
+                }
+            }
+        },
+        "build-storybook": {
+            "executor": "@nrwl/storybook:build",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "uiFramework": "@storybook/react",
+                "outputPath": "dist/storybook/vis",
+                "config": {
+                    "configFolder": "packages/vis/.storybook"
+                }
+            },
+            "configurations": {
+                "ci": {
+                    "quiet": true
+                }
+            }
+        }
+    },
+    "tags": []
+}

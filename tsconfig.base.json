@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@trrack/core": ["packages/core/src/index.ts"],
-      "@trrack/redux": ["packages/redux/src/index.ts"]
+      "@trrack/redux": ["packages/redux/src/index.ts"],
+      "@trrack/vis": ["packages/vis/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,15 @@
+{
+  "name": "@trrack/vis",
+  "version": "0.0.6",
+  "peerDependencies": {
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "d3": "^7.8.0",
+    "@types/d3": "^7.4.0"
+  },
+  "dependencies": {
+    "fast-json-patch": "^3.1.1"
+  }
+}
