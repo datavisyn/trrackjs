@@ -13,7 +13,9 @@
     "@mantine/core": "^4.2.12",
     "@mantine/hooks": "^4.2.12",
     "@swc/helpers": "^0.4.0",
+    "@types/uuid": "^9.0.0",
     "core-js": "^3.6.5",
+    "fast-json-patch": "^3.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
@@ -37,7 +39,7 @@
     "@nrwl/react": "14.5.2",
     "@nrwl/web": "14.5.2",
     "@nrwl/workspace": "14.5.2",
-    "@reduxjs/toolkit": "^1.8.3",
+    "@reduxjs/toolkit": "1.8.3",
     "@swc/cli": "~0.1.55",
     "@swc/core": "~1.2.143",
     "@swc/jest": "0.2.20",
@@ -73,4 +75,3 @@
     "apps/**"
   ]
 }
-

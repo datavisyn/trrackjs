@@ -224,11 +224,12 @@ export function configureTrrackableStore<State>(
 
       if (trrack.isTraversing) return false; // Never run middleware when trrack is traversing.
 
+      console.log('hello were here 7');
       if (middlewareStatus === 'paused') return false; // Never run middleware when middleware is set to pause.
 
       // Check if given actions is fulfilled async thunk action and only then return true.
       if (isAsyncThunkAction(action)) {
-        return isFulfilled(action);
+        return isFulfilled(action) && asyncThunks[action.type] !== undefined;
       }
 
       // Run the middleware if the action is trracked, trrack is not traversing and middleware is not paused.
