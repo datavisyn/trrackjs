@@ -1,0 +1,46 @@
+
+> nx run vis:build-storybook --output-dir=/tmp/chromatic--117529-WQK5oBhOYOvO
+
+
+>  NX  ui framework: @storybook/react
+
+
+>  NX  Storybook builder starting ...
+
+info => Cleaning outputDir: /tmp/chromatic--117529-WQK5oBhOYOvO
+info => Loading presets
+info => Compiling manager..
+info => Compiling preview..
+info Addon-docs: using MDX1
+=> Loading Nrwl React Storybook preset from "@nrwl/react/plugins/storybook"
+info => Using default Webpack5 setup
+info => Manager built (17 s)
+info => Preview built (23 s)
+WARN asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+WARN This can impact web performance.
+WARN Assets: 
+WARN   273.0b01a953.iframe.bundle.js (593 KiB)
+WARN   807.461794ad.iframe.bundle.js (794 KiB)
+WARN   27.5c7d86f6.iframe.bundle.js (1.94 MiB)
+WARN entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+WARN Entrypoints:
+WARN   main (1.98 MiB)
+WARN       runtime~main.b44129a6.iframe.bundle.js
+WARN       27.5c7d86f6.iframe.bundle.js
+WARN       main.5eb49bfa.iframe.bundle.js
+WARN 
+info => Output directory: /tmp/chromatic--117529-WQK5oBhOYOvO
+
+>  NX  Storybook builder finished ...
+
+
+>  NX  Storybook files available in dist/storybook/vis
+
+
+ 
+
+ >  NX   Successfully ran target build-storybook for project vis
+
+
+   See Nx Cloud run details at https://cloud.nx.app/runs/2XnMy7xGdA
+

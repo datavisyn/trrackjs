@@ -36,7 +36,7 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
       duration: config.animationDuration,
       easing: easings.easeInOutSine,
     },
-    top: depth * config.verticalSpace + config.marginTop / 2 + yOffset,
+    top: depth * config.verticalSpace + config.marginTop + yOffset - config.verticalSpace / 2,
   });
 
   return (

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { BaseArtifactType, NodeId, Nodes } from '@trrack/core';
 import React, { useMemo } from 'react';
 import { IconConfig } from '../utils/IconConfig';

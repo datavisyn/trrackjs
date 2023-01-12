@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build-storybook": "nx build-storybook vis",
     "dev:all": "nx run-many --target=serve --projects=react-trrack-example,rtk-trrack-example --output-style=stream",
     "test:all:watch": "nx run-many --target=test --projects=core,redux --watch",
     "prepare": "husky install",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "chromatic": "npx chromatic --project-token=ae8c758133ec"
   },
   "private": true,
   "dependencies": {
@@ -68,6 +70,7 @@
     "@typescript-eslint/eslint-plugin": "5.30.6",
     "@typescript-eslint/parser": "5.30.6",
     "babel-loader": "8.1.0",
+    "chromatic": "^6.14.0",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-import": "2.26.0",
@@ -93,5 +96,7 @@
   "workspaces": [
     "packages/**",
     "apps/**"
-  ]
+  ],
+  "readme": "ERROR: No README data found!",
+  "_id": "trrack@0.0.0"
 }
