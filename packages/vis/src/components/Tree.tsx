@@ -152,7 +152,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
           {nodeIcons}
         </g>
       </svg>
-      <IconLegend colorMap={colorMap} nodes={nodes} config={config} />
+      {/* <IconLegend colorMap={colorMap} nodes={nodes} config={config} /> */}
     </div>
   );
 }

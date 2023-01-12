@@ -2,10 +2,12 @@ import React, { useMemo, useState } from 'react';
 import { ProvVis } from '../components/ProvVis';
 
 import { initializeTrrack, NodeId, Registry } from '@trrack/core';
-import { iconConfig} from './customIcons/iconConfig'
+import { iconConfig } from './customIcons/iconConfig';
+import { Tasks } from './Tasks';
 
 export type Task = {
     id: string;
+    complete: boolean;
 };
 
 const initialState = {
@@ -30,7 +32,7 @@ export function createTrrack() {
             'complete-task',
             (state, task: Task) => {
                 const idx = state.tasks.findIndex((d: any) => d.id === task.id);
-                state.tasks[idx].completed = true;
+                state.tasks[idx].complete = true;
             }
         );
 
@@ -38,7 +40,7 @@ export function createTrrack() {
             'incomplete-task',
             (state, task: Task) => {
                 const idx = state.tasks.findIndex((d: any) => d.id === task.id);
-                state.tasks[idx].completed = false;
+                state.tasks[idx].complete = false;
             }
         );
 
@@ -67,60 +69,74 @@ export const Graph = ({
     verticalSpace = 25,
     marginTop = 25,
     gutter = 25,
+    actions,
+    customIcons = false,
 }: {
     trrack: ReturnType<typeof initializeTrrack<State>>;
+    actions: ReturnType<typeof createTrrack>['actions'];
     verticalSpace?: number;
     marginTop?: number;
     gutter?: number;
+    customIcons?: boolean;
 }) => {
     const [currNode, setCurrNode] = useState<NodeId>();
-
-    console.log(trrack);
 
     trrack.currentChange(() => {
         setCurrNode(trrack.current.id);
     });
 
     return (
-        <ProvVis
-            root={trrack.root.id}
-            config={{
-                changeCurrent: (node: NodeId) => trrack.to(node),
-                verticalSpace: verticalSpace,
-                marginTop: marginTop,
-                gutter: gutter,
+        <div
+            style={{
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center',
+                flexWrap: 'wrap',
             }}
-            nodeMap={trrack.graph.backend.nodes}
-            currentNode={currNode || trrack.root.id}
-        ></ProvVis>
+        >
+            <div
+                style={{
+                    width: '50%',
+                    height: '80%',
+                    display: 'flex',
+                    border: '2px solid lightgray',
+                    borderRadius: 10,
+                    padding: 10,
+                    margin: 5,
+                }}
+            >
+                <div style={{ flex: 10 }}>
+                    <Tasks
+                        state={trrack.getState(trrack.current)}
+                        completeCallback={(task) =>
+                            trrack.apply(
+                                task.complete
+                                    ? `Mark task ${task.id} incomplete`
+                                    : `Mark task ${task.id} complete`,
+                                task.complete
+                                    ? actions.markTaskIncomplete(task)
+                                    : actions.markTaskComplete(task)
+                            )
+                        }
+                    ></Tasks>
+                </div>
+                <div style={{ flex: 1, borderLeft: '2px solid lightgray' }}>
+                    <ProvVis
+                        root={trrack.root.id}
+                        config={{
+                            changeCurrent: (node: NodeId) => trrack.to(node),
+                            verticalSpace: verticalSpace,
+                            marginTop: marginTop,
+                            gutter: gutter,
+                            iconConfig: customIcons ? iconConfig : null
+                        }}
+                        nodeMap={trrack.graph.backend.nodes}
+                        currentNode={currNode || trrack.root.id}
+                    ></ProvVis>
+                </div>
+            </div>
+        </div>
     );
 };
 
-export const CustomIconsGraph = ({
-    trrack,
-}: {
-    trrack: ReturnType<typeof initializeTrrack<State>>;
-}) => {
-    const [currNode, setCurrNode] = useState<NodeId>();
-
-    console.log(trrack);
-
-    trrack.currentChange(() => {
-        setCurrNode(trrack.current.id);
-    });
-
-    return (
-        <ProvVis
-            root={trrack.root.id}
-            config={{
-                changeCurrent: (node: NodeId) => trrack.to(node),
-                verticalSpace: 35,
-                marginTop: 25,
-                gutter: 25,
-                iconConfig: iconConfig,
-            }}
-            nodeMap={trrack.graph.backend.nodes}
-            currentNode={currNode || trrack.root.id}
-        ></ProvVis>
-    );
-};

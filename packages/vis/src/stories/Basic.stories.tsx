@@ -6,140 +6,143 @@ import { createTrrack, Graph } from './setup';
 export const LinearExample: React.FC = () => {
     const { trrack: t, actions } = createTrrack();
 
-    t.apply('add-task', actions.addTask({ id: '1' }));
-    t.apply('add-task', actions.addTask({ id: '2' }));
-    t.apply('add-task', actions.addTask({ id: '3' }));
-    t.apply('add-task', actions.addTask({ id: '4' }));
-    t.apply('add-task', actions.addTask({ id: '5' }));
-    t.apply('add-task', actions.addTask({ id: '6' }));
-    t.apply('add-task', actions.addTask({ id: '7' }));
+    t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '5', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '7', complete: false }));
 
-    return t ? <Graph trrack={t} /> : <div></div>;
+    return t ? <Graph actions={actions} trrack={t} /> : <div></div>;
 };
 
 export const OneBranch: React.FC = () => {
     const { trrack: t, actions } = createTrrack();
 
-    t.apply('add-task', actions.addTask({ id: '1' }));
-    t.apply('add-task', actions.addTask({ id: '2' }));
-    t.apply('add-task', actions.addTask({ id: '3' }));
-    t.apply('add-task', actions.addTask({ id: '4' }));
-    t.apply('add-task', actions.addTask({ id: '5' }));
+    t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '5', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '6' }));
-    t.apply('add-task', actions.addTask({ id: '7' }));
-    t.apply('add-task', actions.addTask({ id: '8' }));
-    t.apply('add-task', actions.addTask({ id: '9' }));
+    t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '7', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '8', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '9', complete: false }));
 
-    return t ? <Graph trrack={t} /> : <div></div>;
+    return t ? <Graph actions={actions} trrack={t} /> : <div></div>;
 };
 
 export const Complex: React.FC = () => {
     const { trrack: t, actions } = createTrrack();
 
-    t.apply('add-task', actions.addTask({ id: '1' }));
-    t.apply('add-task', actions.addTask({ id: '2' }));
-    t.apply('add-task', actions.addTask({ id: '3' }));
-    t.apply('add-task', actions.addTask({ id: '4' }));
-    t.apply('add-task', actions.addTask({ id: '5' }));
+    t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '5', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '6' }));
-    t.apply('add-task', actions.addTask({ id: '7' }));
-    t.apply('add-task', actions.addTask({ id: '8' }));
-    t.apply('add-task', actions.addTask({ id: '9' }));
+    t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '7', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '8', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '9', complete: false }));
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '14' }));
+    t.apply('Add task', actions.addTask({ id: '14', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '10' }));
-    t.apply('add-task', actions.addTask({ id: '11' }));
-    t.apply('add-task', actions.addTask({ id: '12' }));
-    t.apply('add-task', actions.addTask({ id: '13' }));
+    t.apply('Add task', actions.addTask({ id: '10', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '11', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '12', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph trrack={t} /> : <div></div>;
+    return t ? <Graph actions={actions} trrack={t} /> : <div></div>;
 };
 
 export const LargeGutter: React.FC = () => {
     const { trrack: t, actions } = createTrrack();
 
-    t.apply('add-task', actions.addTask({ id: '1' }));
-    t.apply('add-task', actions.addTask({ id: '2' }));
-    t.apply('add-task', actions.addTask({ id: '3' }));
-    t.apply('add-task', actions.addTask({ id: '4' }));
-    t.apply('add-task', actions.addTask({ id: '5' }));
+    t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '5', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '6' }));
-    t.apply('add-task', actions.addTask({ id: '7' }));
-    t.apply('add-task', actions.addTask({ id: '8' }));
-    t.apply('add-task', actions.addTask({ id: '9' }));
+    t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '7', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '8', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '9', complete: false }));
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '14' }));
+    t.apply('Add task', actions.addTask({ id: '14', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '10' }));
-    t.apply('add-task', actions.addTask({ id: '11' }));
-    t.apply('add-task', actions.addTask({ id: '12' }));
-    t.apply('add-task', actions.addTask({ id: '13' }));
+    t.apply('Add task', actions.addTask({ id: '10', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '11', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '12', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph gutter={50} trrack={t} /> : <div></div>;
+    return t ? <Graph actions={actions} gutter={50} trrack={t} /> : <div></div>;
 };
 
 export const LargeVertSpace: React.FC = () => {
     const { trrack: t, actions } = createTrrack();
 
-    t.apply('add-task', actions.addTask({ id: '1' }));
-    t.apply('add-task', actions.addTask({ id: '2' }));
-    t.apply('add-task', actions.addTask({ id: '3' }));
-    t.apply('add-task', actions.addTask({ id: '4' }));
-    t.apply('add-task', actions.addTask({ id: '5' }));
+    t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '5', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '6' }));
-    t.apply('add-task', actions.addTask({ id: '7' }));
-    t.apply('add-task', actions.addTask({ id: '8' }));
-    t.apply('add-task', actions.addTask({ id: '9' }));
+    t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '7', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '8', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '9', complete: false }));
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '14' }));
+    t.apply('Add task', actions.addTask({ id: '14', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '10' }));
-    t.apply('add-task', actions.addTask({ id: '11' }));
-    t.apply('add-task', actions.addTask({ id: '12' }));
-    t.apply('add-task', actions.addTask({ id: '13' }));
+    t.apply('Add task', actions.addTask({ id: '10', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '11', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '12', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph verticalSpace={50} trrack={t} /> : <div></div>;
+    return t ? <Graph actions={actions} verticalSpace={50} trrack={t} /> : <div></div>;
 };
 
 export const LargeMarginTop: React.FC = () => {
     const { trrack: t, actions } = createTrrack();
 
-    t.apply('add-task', actions.addTask({ id: '1' }));
-    t.apply('add-task', actions.addTask({ id: '2' }));
-    t.apply('add-task', actions.addTask({ id: '3' }));
-    t.apply('add-task', actions.addTask({ id: '4' }));
-    t.apply('add-task', actions.addTask({ id: '5' }));
+    t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '5', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '6' }));
-    t.apply('add-task', actions.addTask({ id: '7' }));
-    t.apply('add-task', actions.addTask({ id: '8' }));
-    t.apply('add-task', actions.addTask({ id: '9' }));
+    t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '7', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '8', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '9', complete: false }));
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '14' }));
+    t.apply('Add task', actions.addTask({ id: '14', complete: false }));
     t.undo();
     t.undo();
-    t.apply('add-task', actions.addTask({ id: '10' }));
-    t.apply('add-task', actions.addTask({ id: '11' }));
-    t.apply('add-task', actions.addTask({ id: '12' }));
-    t.apply('add-task', actions.addTask({ id: '13' }));
+    t.apply('Add task', actions.addTask({ id: '10', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '11', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '12', complete: false }));
+    t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph marginTop={50} trrack={t} /> : <div></div>;
+    return t ? <Graph actions={actions} marginTop={50} trrack={t} /> : <div></div>;
 };
 
 export default {
     component: LinearExample,
     title: 'Components/Basic',
+    parameters: {
+        layout: 'fullscreen',
+      },
 } as Meta;
