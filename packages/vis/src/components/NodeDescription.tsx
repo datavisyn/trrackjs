@@ -36,7 +36,14 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
       duration: config.animationDuration,
       easing: easings.easeInOutSine,
     },
-    top: depth * config.verticalSpace + config.marginTop + yOffset - config.verticalSpace / 2,
+    from: {
+      opacity: 0,
+      top: depth * config.verticalSpace + config.marginTop + yOffset - config.verticalSpace / 2,
+    },
+    to: {
+      opacity: 1,
+      top: depth * config.verticalSpace + config.marginTop + yOffset - config.verticalSpace / 2,
+    }
   });
 
   return (
@@ -47,11 +54,9 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
           cursor: 'pointer',
           position: 'absolute',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           height: config.verticalSpace,
-          justifyContent: 'center',
-          alignItems: 'end',
-          width: `${config.labelWidth}px`,
+          width: `${config.labelWidth + 50}px`,
         }}
         onClick={onClick}
         onMouseEnter={() => setHover(node.id)}
@@ -59,24 +64,19 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
       >
         <div
           style={{
+            width: `${config.labelWidth}px`,
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
           }}
         >
-          {isHover || annotationDepth === depth ? (
-            <AnnotationButton color="cornflowerblue" isAnnotating={annotationDepth === depth} onClick={() => setAnnotationDepth(depth)} />
-          ) : null}
-          {isHover || config.isBookmarked(node.id) ? (
-            <BookmarkButton color={colorMap[node.meta.eventType]} isBookmarked={config.isBookmarked(node.id)} onClick={() => config.bookmarkNode(node.id)} />
-          ) : null}
+
           <div
             style={{
-              // width: `${config.labelWidth}px`,
-              alignItems: 'end',
+              alignItems: 'start',
+              justifyContent: 'center',
               display: 'flex',
               flexDirection: 'column',
+              marginRight: 'auto'
             }}
           >
             <p
@@ -106,6 +106,12 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
             ) : null}
           </div>
         </div>
+        {isHover || annotationDepth === depth ? (
+            <AnnotationButton color="cornflowerblue" isAnnotating={annotationDepth === depth} onClick={() => setAnnotationDepth(depth)} />
+          ) : null}
+          {isHover || config.isBookmarked(node.id) ? (
+            <BookmarkButton color={colorMap[node.meta.eventType]} isBookmarked={config.isBookmarked(node.id)} onClick={() => config.bookmarkNode(node.id)} />
+          ) : null}
       </animated.div>
       {annotationDepth === depth ? (
         <animated.div

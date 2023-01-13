@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
 import React, { useState, useMemo } from 'react';
 import { useSpring, animated, easings } from 'react-spring';
@@ -16,6 +15,7 @@ export function AnimatedIcon<T, S extends string, A extends BaseArtifactType<any
   isHover,
   setHover,
   colorMap,
+  xOffset
 }: {
   width: number;
   depth: number;
@@ -27,13 +27,19 @@ export function AnimatedIcon<T, S extends string, A extends BaseArtifactType<any
   isHover: boolean;
   setHover: (node: NodeId | null) => void;
   colorMap: Record<S | 'Root', string>;
+  xOffset: number;
 }) {
   const style = useSpring({
     config: {
       duration: config.animationDuration,
       easing: easings.easeInOutSine,
     },
-    transform: `translate(${width * config.gutter}, ${depth * config.verticalSpace + yOffset})`,
+    from: {
+      transform: `translate(${-width * config.gutter + xOffset} , ${(depth - 1) * config.verticalSpace + yOffset})`,
+    },
+    to: {
+      transform: `translate(${-width * config.gutter + xOffset} , ${depth * config.verticalSpace + yOffset})`,
+    }
   });
 
   const icon = useMemo(() => {

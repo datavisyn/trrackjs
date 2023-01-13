@@ -126,6 +126,7 @@ export const Graph = ({
                         root={trrack.root.id}
                         config={{
                             changeCurrent: (node: NodeId) => trrack.to(node),
+                            labelWidth: 100,
                             verticalSpace: verticalSpace,
                             marginTop: marginTop,
                             gutter: gutter,
