@@ -67,6 +67,7 @@ export function createTrrack() {
 export const Graph = ({
     trrack,
     verticalSpace = 25,
+    labelSize = 100,
     marginTop = 25,
     gutter = 25,
     actions,
@@ -74,6 +75,7 @@ export const Graph = ({
 }: {
     trrack: ReturnType<typeof initializeTrrack<State>>;
     actions: ReturnType<typeof createTrrack>['actions'];
+    labelSize?: number;
     verticalSpace?: number;
     marginTop?: number;
     gutter?: number;
@@ -129,6 +131,7 @@ export const Graph = ({
                             labelWidth: 100,
                             verticalSpace: verticalSpace,
                             marginTop: marginTop,
+                            marginLeft: 15,
                             gutter: gutter,
                             iconConfig: customIcons ? iconConfig : null
                         }}

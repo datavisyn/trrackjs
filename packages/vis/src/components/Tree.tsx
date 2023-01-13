@@ -1,6 +1,6 @@
 import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
-import React, { useMemo, useState } from 'react';
-import { HierarchyLink, HierarchyNode } from 'd3';
+import React, { useEffect, useMemo, useState } from 'react';
+import * as d3 from 'd3';
 import { AnimatedIcon } from './AnimatedIcon';
 import { AnimatedLine } from './AnimatedLine';
 import { ProvVisConfig } from './ProvVis';
@@ -8,7 +8,7 @@ import { NodeDescription } from './NodeDescription';
 import { StratifiedMap } from './useComputeNodePosition';
 import { IconLegend } from './IconLegend';
 
-const NODE_WIDTH_SHOWN = 3;
+const NODE_WIDTH_SHOWN = 2;
 
 export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     nodes,
@@ -23,10 +23,14 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
 }) {
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
     const [annotationDepth, setAnnotationDepth] = useState<number | null>(null);
+    const [xPan, setXPan] = useState<number>(0);
 
     const maxWidth = useMemo(() => {
         return Math.max(
-            ...Object.values(nodes).map((node) => (node.width ? node.width : 0)), NODE_WIDTH_SHOWN
+            ...Object.values(nodes).map((node) =>
+                node.width ? node.width : 0
+            ),
+            NODE_WIDTH_SHOWN
         );
     }, [nodes]);
 
@@ -103,13 +107,13 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
         return links.map((link) => {
             // TODO:: idk how to fix this typing
             const sourceWidth = (
-                link.source as HierarchyNode<ProvenanceNode<T, S, A>> & {
+                link.source as d3.HierarchyNode<ProvenanceNode<T, S, A>> & {
                     width: number;
                 }
             ).width;
 
             const targetWidth = (
-                link.target as HierarchyNode<ProvenanceNode<T, S, A>> & {
+                link.target as d3.HierarchyNode<ProvenanceNode<T, S, A>> & {
                     width: number;
                 }
             ).width;
@@ -122,7 +126,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                     y1Depth={link.source.depth}
                     y2Depth={link.target.depth}
                     config={config}
-                    xOffset={maxWidth * config.gutter}
+                    xOffset={NODE_WIDTH_SHOWN * config.gutter}
                     y1Offset={0}
                     y2Offset={0}
                 />
@@ -153,12 +157,27 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         setHoverNode(currNode)
                     }
                     colorMap={colorMap}
-                    xOffset={maxWidth * config.gutter}
+                    xOffset={NODE_WIDTH_SHOWN * config.gutter}
                     yOffset={0}
                 />
             );
         });
     }, [nodes, currentNode, config, hoverNode, colorMap]);
+
+    // // apply zoom/panning
+    useEffect(() => {
+        const zoom = d3.zoom().translateExtent([[(NODE_WIDTH_SHOWN - maxWidth) * config.gutter, 0], [NODE_WIDTH_SHOWN * config.gutter + config.marginLeft + config.nodeAndLabelGap, 0]]);
+
+        console.log(zoom.translateExtent())
+
+        zoom.on('zoom', (event: d3.D3ZoomEvent<any, any>) => {
+            const { transform } = event;
+
+            setXPan(transform.x)
+        });
+
+        d3.select<SVGGElement, any>(`#panLayer`).call(zoom as any);
+    }, [maxWidth, config]);
 
     return (
         <div
@@ -168,15 +187,27 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                 gap: `0px`,
             }}
         >
-            <div style={{height: '100%', width: `${NODE_WIDTH_SHOWN * config.gutter + config.marginLeft}px`, overflowX: 'auto', overflowY: 'hidden'}}>
+            <div
+                style={{
+                    height: '100%',
+                    width: `${
+                        NODE_WIDTH_SHOWN * config.gutter + config.marginLeft + config.nodeAndLabelGap
+                    }px`,
+                    overflowX: 'auto',
+                    overflowY: 'hidden',
+                }}
+            >
                 <svg
+                    id="panLayer"
                     style={{
                         height: '100%',
-                        width: `${maxWidth * config.gutter + config.marginLeft}px`,
+                        width: `${
+                            NODE_WIDTH_SHOWN * config.gutter + config.marginLeft + config.nodeAndLabelGap
+                        }px`,
                     }}
                 >
                     <g
-                        transform={`translate(${config.nodeAndLabelGap}, ${config.marginTop})`}
+                        transform={`translate(${config.marginLeft + xPan}, ${config.marginTop})`}
                     >
                         {edges}
                         {nodeIcons}

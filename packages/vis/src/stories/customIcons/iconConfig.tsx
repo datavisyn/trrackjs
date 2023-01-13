@@ -6,7 +6,7 @@ import { IconConfig } from '../../utils/IconConfig'
 import {Task} from '../setup'
 
 export const iconConfig: IconConfig<{
-    tasks: Task[];
+    tasks: Task[]
 }, string, any>  = {
     'add-task': {
         glyph: () => (

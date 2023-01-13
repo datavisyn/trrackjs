@@ -17,44 +17,47 @@ export function Tasks({
                 return (
                     <Group spacing={'xs'}>
                         <Text style={{ marginRight: 'auto' }}>{task.id}</Text>
-                        <ActionIcon>
+                        <ActionIcon
+                            onClick={() => {
+                                if (!task.complete) {
+                                    completeCallback(task);
+                                }
+                            }}
+                        >
                             <FontAwesomeIcon
                                 icon={faCheck}
                                 color={task.complete ? 'green' : 'lightgray'}
-                                onClick={() => {
-                                    if (!task.complete) {
-                                        completeCallback(task);
-                                    }
-                                }}
                             ></FontAwesomeIcon>
                         </ActionIcon>
-                        <ActionIcon>
+                        <ActionIcon
+                            onClick={() => {
+                                if (task.complete) {
+                                    completeCallback(task);
+                                }
+                            }}
+                        >
                             <FontAwesomeIcon
                                 icon={faX}
                                 color={task.complete ? 'lightgray' : 'red'}
-                                onClick={() => {
-                                    if (task.complete) {
-                                        completeCallback(task);
-                                    }
-                                }}
                             ></FontAwesomeIcon>
                         </ActionIcon>
-                        <ActionIcon>
+                        <ActionIcon
+                            onClick={() => {
+                                if (task.complete) {
+                                    completeCallback(task);
+                                }
+                            }}
+                        >
                             <FontAwesomeIcon
                                 icon={faTrash}
                                 color={'gray'}
-                                onClick={() => {
-                                    if (task.complete) {
-                                        completeCallback(task);
-                                    }
-                                }}
                             ></FontAwesomeIcon>
                         </ActionIcon>
                     </Group>
                 );
             })}
             <Center>
-                    <Button>Add</Button>
+                <Button>Add</Button>
             </Center>
         </Stack>
     );
