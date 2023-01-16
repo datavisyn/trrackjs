@@ -133,7 +133,7 @@ export const Graph = ({
                             marginTop: marginTop,
                             marginLeft: 15,
                             gutter: gutter,
-                            iconConfig: customIcons ? iconConfig : null
+                            iconConfig: customIcons ? iconConfig : null,
                         }}
                         nodeMap={trrack.graph.backend.nodes}
                         currentNode={currNode || trrack.root.id}
@@ -143,4 +143,3 @@ export const Graph = ({
         </div>
     );
 };
-

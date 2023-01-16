@@ -7,6 +7,7 @@ import { ProvVisConfig } from './ProvVis';
 import { NodeDescription } from './NodeDescription';
 import { StratifiedMap } from './useComputeNodePosition';
 import { IconLegend } from './IconLegend';
+import { useSpring, animated, easings } from 'react-spring';
 
 // TODOs:
 // Implement a version that starts on the left, shifts until node width shown, then overflows
@@ -15,6 +16,8 @@ import { IconLegend } from './IconLegend';
 // Storybooks for each part of config
 // Custom icons for the other actions
 // Delete/add actions working in storybooks
+
+// Maybe fill nodes behind your current to signify that they have happened
 
 export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     nodes,
@@ -33,10 +36,8 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
 
     const maxWidth = useMemo(() => {
         return Math.max(
-            ...Object.values(nodes).map((node) =>
-                node.width ? node.width : 0
-            ),
-            config.nodeWidthShown
+            ...Object.values(nodes).map((node) => (node.width ? node.width : 0))
+            // config.nodeWidthShown
         );
     }, [nodes]);
 
@@ -47,6 +48,37 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             )
         );
     }, [nodes]);
+
+    const descriptionDivAnimation = useSpring({
+        config: {
+            duration: config.animationDuration,
+
+            easing: easings.easeInOutSine,
+        },
+        width: `${
+            config.labelWidth +
+            config.marginRight +
+            (config.nodeWidthShown - maxWidth > 0
+                ? (config.nodeWidthShown - maxWidth) * config.gutter
+                : 0)
+        }px`,
+    });
+
+    const svgDivAnimation = useSpring({
+        config: {
+            duration: config.animationDuration,
+
+            easing: easings.easeInOutSine,
+        },
+        width: `${
+            (maxWidth > config.nodeWidthShown
+                ? config.nodeWidthShown
+                : maxWidth) *
+                config.gutter +
+            config.marginLeft +
+            config.nodeAndLabelGap
+        }px`,
+    });
 
     // give each event type a color to use for the default icons
     // colors are the default tableau 10 colors
@@ -135,12 +167,19 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             return (
                 <AnimatedLine
                     key={link.source.id + link.target.id}
+                    uniqueKey={link.source.id + link.target.id}
+                    parentNode={link.source}
+                    nodes={nodes}
                     x1Width={sourceWidth}
                     x2Width={targetWidth}
                     y1Depth={link.source.depth}
                     y2Depth={link.target.depth}
                     config={config}
-                    xOffset={config.nodeWidthShown * config.gutter}
+                    xOffset={
+                        (maxWidth > config.nodeWidthShown
+                            ? config.nodeWidthShown
+                            : maxWidth) * config.gutter
+                    }
                     y1Offset={0}
                     y2Offset={0}
                 />
@@ -163,6 +202,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         }
                         config.changeCurrent(node.id);
                     }}
+                    nodes={nodes}
                     config={config}
                     node={node.data}
                     currentNode={currentNode}
@@ -171,7 +211,11 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         setHoverNode(currNode)
                     }
                     colorMap={colorMap}
-                    xOffset={config.nodeWidthShown * config.gutter}
+                    xOffset={
+                        (maxWidth > config.nodeWidthShown
+                            ? config.nodeWidthShown
+                            : maxWidth) * config.gutter
+                    }
                     yOffset={0}
                 />
             );
@@ -186,7 +230,10 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             .translateExtent([
                 [(config.nodeWidthShown - maxWidth) * config.gutter, 0],
                 [
-                    config.nodeWidthShown * config.gutter +
+                    (maxWidth > config.nodeWidthShown
+                        ? config.nodeWidthShown
+                        : maxWidth) *
+                        config.gutter +
                         config.marginLeft +
                         config.nodeAndLabelGap,
                     0,
@@ -212,21 +259,20 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                 overflowX: 'hidden',
             }}
         >
-            <div
+            <animated.div
                 style={{
                     height: '100%',
-                    width: `${
-                        config.nodeWidthShown * config.gutter +
-                        config.marginLeft +
-                        config.nodeAndLabelGap
-                    }px`,
+                    ...svgDivAnimation,
                 }}
             >
                 <svg
                     id="panLayer"
                     style={{
                         overflow: 'hidden',
-                        height: `${(maxHeight + 1) * config.verticalSpace + config.marginTop}`,
+                        height: `${
+                            (maxHeight + 1) * config.verticalSpace +
+                            config.marginTop
+                        }`,
                         width: `${
                             config.nodeWidthShown * config.gutter +
                             config.marginLeft +
@@ -243,15 +289,15 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         {nodeIcons}
                     </g>
                 </svg>
-            </div>
-            <div
+            </animated.div>
+            <animated.div
                 style={{
                     position: 'relative',
-                    width: `${config.labelWidth + 40}px`,
+                    ...descriptionDivAnimation,
                 }}
             >
                 {descriptions}
-            </div>
+            </animated.div>
 
             {/* <IconLegend colorMap={colorMap} nodes={nodes} config={config} /> */}
         </div>

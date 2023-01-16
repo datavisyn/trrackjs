@@ -15,6 +15,7 @@ export interface ProvVisConfig<T, S extends string, A extends BaseArtifactType<a
   gutter: number;
   verticalSpace: number;
   nodeWidthShown: number;
+  marginRight: number;
   marginTop: number;
   marginLeft: number;
   animationDuration: number;
@@ -34,6 +35,7 @@ const defaultConfig: ProvVisConfig<any, any, any> = {
   nodeWidthShown: 3,
   verticalSpace: 50,
   marginTop: 50,
+  marginRight: 40,
   marginLeft: 50,
   animationDuration: 500,
   annotationHeight: 150,

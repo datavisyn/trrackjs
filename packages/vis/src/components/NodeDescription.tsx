@@ -58,7 +58,7 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
           height: config.verticalSpace,
           alignContent: 'center',
           flexWrap: 'wrap',
-          width: `${config.labelWidth + 50}px`,
+          width: `100%`,
         }}
         onClick={onClick}
         onMouseEnter={() => setHover(node.id)}
@@ -66,7 +66,7 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
       >
         <div
           style={{
-            width: `${config.labelWidth}px`,
+            width: `calc(100% - ${config.marginRight}px)`,
             display: 'flex',
             flexDirection: 'row',
           }}
@@ -78,12 +78,13 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
               justifyContent: 'center',
               display: 'flex',
               flexDirection: 'column',
-              marginRight: 'auto'
+              marginRight: 'auto',
+              width: '100%',
             }}
           >
             <p
               style={{
-                maxWidth: `${config.labelWidth}px`,
+                maxWidth: `100%`,
                 margin: 0,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
