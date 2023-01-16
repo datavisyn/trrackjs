@@ -10,13 +10,9 @@ import { IconLegend } from './IconLegend';
 import { useSpring, animated, easings } from 'react-spring';
 
 // TODOs:
-// Implement a version that starts on the left, shifts until node width shown, then overflows
 // Bookmarking doing something
 // Annotations doing something
 // Storybooks for each part of config
-// Custom icons for the other actions
-// Delete/add actions working in storybooks
-
 // Maybe fill nodes behind your current to signify that they have happened
 
 export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
@@ -33,6 +29,10 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
     const [annotationDepth, setAnnotationDepth] = useState<number | null>(null);
     const [xPan, setXPan] = useState<number>(0);
+
+    useEffect(() => {
+      setXPan(0)
+    }, [currentNode])
 
     const maxWidth = useMemo(() => {
         return Math.max(
@@ -78,6 +78,17 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             config.marginLeft +
             config.nodeAndLabelGap
         }px`,
+    });
+
+    const svgPanAnimation = useSpring({
+        config: {
+            duration: config.animationDuration,
+            easing: easings.easeInOutSine,
+        },
+        immediate: xPan !== 0,
+        transform: `translate(${config.marginLeft + xPan}, ${
+            config.marginTop
+        })`,
     });
 
     // give each event type a color to use for the default icons
@@ -222,6 +233,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
         });
     }, [nodes, currentNode, config, hoverNode, colorMap]);
 
+    d3.ZoomTransform
     // // apply zoom/panning
     useEffect(() => {
         const zoom = d3
@@ -242,12 +254,18 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
 
         zoom.on('zoom', (event: d3.D3ZoomEvent<any, any>) => {
             const { transform } = event;
-
             setXPan(transform.x);
         });
 
+
+        const svg = d3.select<SVGGElement, any>(`#panLayer`)
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        zoom.transform(svg, d3.zoomIdentity);
+
         d3.select<SVGGElement, any>(`#panLayer`).call(zoom as any);
-    }, [maxWidth, config]);
+    }, [maxWidth, config, currentNode]);
 
     return (
         <div
@@ -280,14 +298,12 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         }px`,
                     }}
                 >
-                    <g
-                        transform={`translate(${config.marginLeft + xPan}, ${
-                            config.marginTop
-                        })`}
+                    <animated.g
+                        {...svgPanAnimation}
                     >
                         {edges}
                         {nodeIcons}
-                    </g>
+                    </animated.g>
                 </svg>
             </animated.div>
             <animated.div

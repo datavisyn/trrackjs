@@ -7,9 +7,13 @@ import { State, Task } from './setup';
 export function Tasks({
     state,
     completeCallback,
+    deleteCallback,
+    addCallback
 }: {
     state: State;
     completeCallback: (task: Task) => void;
+    deleteCallback: (task: Task) => void;
+    addCallback: () => void;
 }) {
     return (
         <Stack spacing={2}>
@@ -43,9 +47,7 @@ export function Tasks({
                         </ActionIcon>
                         <ActionIcon
                             onClick={() => {
-                                if (task.complete) {
-                                    completeCallback(task);
-                                }
+                                    deleteCallback(task);
                             }}
                         >
                             <FontAwesomeIcon
@@ -57,7 +59,7 @@ export function Tasks({
                 );
             })}
             <Center>
-                <Button>Add</Button>
+                <Button onClick={() => addCallback()}>Add</Button>
             </Center>
         </Stack>
     );

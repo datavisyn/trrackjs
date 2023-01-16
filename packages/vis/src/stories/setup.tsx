@@ -17,11 +17,13 @@ const initialState = {
 export type State = typeof initialState;
 
 export function createTrrack() {
+    let taskCounter = 1;
     const { registry, actions } = useMemo(() => {
         const reg = Registry.create();
 
         const addTask = reg.register('add-task', (state, task: Task) => {
             state.tasks.push(task);
+            taskCounter += 1;
         });
 
         const removeTask = reg.register('remove-task', (state, task: Task) => {
@@ -111,6 +113,11 @@ export const Graph = ({
                 <div style={{ flex: 10 }}>
                     <Tasks
                         state={trrack.getState(trrack.current)}
+                        deleteCallback={(task) => trrack.apply(`Delete task ${task.id}`, actions.removeTask(task))}
+                        addCallback={() => {
+                            const randomNum = Math.floor(100000 + Math.random() * 900000).toString()
+                            trrack.apply(`Adding task ${randomNum}`, actions.addTask({id: randomNum, complete: false}))}
+                        }
                         completeCallback={(task) =>
                             trrack.apply(
                                 task.complete
