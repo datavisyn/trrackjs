@@ -56,6 +56,8 @@ export function NodeDescription<T, S extends string, A extends BaseArtifactType<
           display: 'flex',
           flexDirection: 'row',
           height: config.verticalSpace,
+          alignContent: 'center',
+          flexWrap: 'wrap',
           width: `${config.labelWidth + 50}px`,
         }}
         onClick={onClick}

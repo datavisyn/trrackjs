@@ -8,7 +8,13 @@ import { NodeDescription } from './NodeDescription';
 import { StratifiedMap } from './useComputeNodePosition';
 import { IconLegend } from './IconLegend';
 
-const NODE_WIDTH_SHOWN = 2;
+// TODOs:
+// Implement a version that starts on the left, shifts until node width shown, then overflows
+// Bookmarking doing something
+// Annotations doing something
+// Storybooks for each part of config
+// Custom icons for the other actions
+// Delete/add actions working in storybooks
 
 export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     nodes,
@@ -17,7 +23,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     config,
 }: {
     nodes: StratifiedMap<T, S, A>;
-    links: HierarchyLink<ProvenanceNode<T, S, A>>[];
+    links: d3.HierarchyLink<ProvenanceNode<T, S, A>>[];
     config: ProvVisConfig<T, S, A>;
     currentNode: NodeId;
 }) {
@@ -30,7 +36,15 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             ...Object.values(nodes).map((node) =>
                 node.width ? node.width : 0
             ),
-            NODE_WIDTH_SHOWN
+            config.nodeWidthShown
+        );
+    }, [nodes]);
+
+    const maxHeight = useMemo(() => {
+        return Math.max(
+            ...Object.values(nodes).map((node) =>
+                node.height ? node.height : 0
+            )
         );
     }, [nodes]);
 
@@ -126,7 +140,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                     y1Depth={link.source.depth}
                     y2Depth={link.target.depth}
                     config={config}
-                    xOffset={NODE_WIDTH_SHOWN * config.gutter}
+                    xOffset={config.nodeWidthShown * config.gutter}
                     y1Offset={0}
                     y2Offset={0}
                 />
@@ -157,7 +171,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         setHoverNode(currNode)
                     }
                     colorMap={colorMap}
-                    xOffset={NODE_WIDTH_SHOWN * config.gutter}
+                    xOffset={config.nodeWidthShown * config.gutter}
                     yOffset={0}
                 />
             );
@@ -166,14 +180,23 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
 
     // // apply zoom/panning
     useEffect(() => {
-        const zoom = d3.zoom().translateExtent([[(NODE_WIDTH_SHOWN - maxWidth) * config.gutter, 0], [NODE_WIDTH_SHOWN * config.gutter + config.marginLeft + config.nodeAndLabelGap, 0]]);
-
-        console.log(zoom.translateExtent())
+        const zoom = d3
+            .zoom()
+            .scaleExtent([1, 1])
+            .translateExtent([
+                [(config.nodeWidthShown - maxWidth) * config.gutter, 0],
+                [
+                    config.nodeWidthShown * config.gutter +
+                        config.marginLeft +
+                        config.nodeAndLabelGap,
+                    0,
+                ],
+            ]);
 
         zoom.on('zoom', (event: d3.D3ZoomEvent<any, any>) => {
             const { transform } = event;
 
-            setXPan(transform.x)
+            setXPan(transform.x);
         });
 
         d3.select<SVGGElement, any>(`#panLayer`).call(zoom as any);
@@ -185,29 +208,36 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                 display: 'flex',
                 height: '100%',
                 gap: `0px`,
+                overflowY: 'auto',
+                overflowX: 'hidden',
             }}
         >
             <div
                 style={{
                     height: '100%',
                     width: `${
-                        NODE_WIDTH_SHOWN * config.gutter + config.marginLeft + config.nodeAndLabelGap
+                        config.nodeWidthShown * config.gutter +
+                        config.marginLeft +
+                        config.nodeAndLabelGap
                     }px`,
-                    overflowX: 'auto',
-                    overflowY: 'hidden',
                 }}
             >
                 <svg
                     id="panLayer"
                     style={{
-                        height: '100%',
+                        overflow: 'hidden',
+                        height: `${(maxHeight + 1) * config.verticalSpace + config.marginTop}`,
                         width: `${
-                            NODE_WIDTH_SHOWN * config.gutter + config.marginLeft + config.nodeAndLabelGap
+                            config.nodeWidthShown * config.gutter +
+                            config.marginLeft +
+                            config.nodeAndLabelGap
                         }px`,
                     }}
                 >
                     <g
-                        transform={`translate(${config.marginLeft + xPan}, ${config.marginTop})`}
+                        transform={`translate(${config.marginLeft + xPan}, ${
+                            config.marginTop
+                        })`}
                     >
                         {edges}
                         {nodeIcons}
